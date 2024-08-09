@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Dependency directories
+jspm_packages/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor directories
+.vscode/
+.idea/
+
+# Build directories
+dist/
+build/
+
+# Other files
+*.env.local
+*.env.production
+*.env.development
+
+# Exclude all .env files if using multiple
+.env.*
