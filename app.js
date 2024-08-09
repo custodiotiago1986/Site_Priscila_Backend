@@ -10,7 +10,7 @@ app.use(express.json());
 connectToDatabase();
 
 // Configurar rotas
-app.use('/api/users', userRouter);
+app.use('/users', userRouter);
 
 const PORT = process.env.PORT || 3000;
 
