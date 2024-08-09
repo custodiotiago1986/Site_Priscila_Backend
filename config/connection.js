@@ -1,22 +1,20 @@
-const mongoose = require('mongoose');
+require("dotenv").config();
+const mongoose = require("mongoose");
 
-const connectToDatabase = async () => {
-  try {
-    // Substitua por sua string de conexão do Azure Cosmos DB
-    const dbURI = process.env.DATABASE_URL;
-    const dbName = process.env.DATABASE_NAME;
+async function getConnectionInfo() {
+  const DATABASE_URL = process.env.DATABASE_URL;
+  const DATABASE_NAME = process.env.DATABASE_NAME || "azure-todo-app";
 
-    await mongoose.connect(dbURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      dbName: dbName
-    });
-
-    console.log('Conectado ao Azure Cosmos DB');
-  } catch (error) {
-    console.error('Erro ao conectar ao Azure Cosmos DB:', error);
-    process.exit(1);
+  if (!DATABASE_URL) {
+    throw new Error("No value in DATABASE_URL in env var");
   }
-};
 
-module.exports = connectToDatabase;
+  return {
+    DATABASE_URL,
+    DATABASE_NAME
+  };
+}
+
+module.exports = {
+  getConnectionInfo
+};
